@@ -1,0 +1,131 @@
+# "Streak" or "Casual" rewarding system
+Type: Streak
+debug: false
+forceOpen: true
+rewardSound: "LEVEL_UP"
+Rewards:
+   first:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      firework:
+         deploy: true
+         amount: 3
+      name: "&61. &eGünün Ödülü"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"
+   second:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      firework:
+         deploy: true
+         amount: 3
+      name: "&62. &eGünün Ödülü"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"
+   third:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      firework:
+         deploy: true
+         amount: 3
+      name: "&63. &eGünün Ödülü"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"
+   fourth:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      firework:
+         deploy: true
+         amount: 3
+      name: "&64. &eGünün Ödülü"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"
+   fifth:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      firework:
+         deploy: true
+         amount: 3
+      name: "&65. &eGünün Ödülü"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"
+   sixth:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      firework:
+         deploy: true
+         amount: 3
+      name: "&66. &eGünün Ödülü"
+      requirement:
+         permission: "gunlukodul.vip"
+      reqErrorMessage: "&2GünlükÖdül &4VIP &cyetkin bulunmadığından ödül alamadın!"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"
+   seventh:
+      material: STORAGE_MINECART
+      tookedMaterial: MINECART
+      requirement:
+         statistic_hours_played: 200
+      reqErrorMessage: "&2GünlükÖdül &4200 &csaat oynamadığın için ödül alamadın!"
+      firework:
+         deploy: true
+         amount: 3
+      name: "&67. &eGünün Ödülü"
+      lore:
+      - ""
+      - "&7Günlük bonusunuzu almak için"
+      - "&7her gün tekrar gelin!"
+      - ""
+      - "&eÜst üste ne kadar çok gün katılırsanız,"
+      - "&eödül o kadar iyi olur!"
+      - "&7Durum: {status}"
+      commands:
+      - "msg %player% tebrikler!"

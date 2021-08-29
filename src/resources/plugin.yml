@@ -1,0 +1,9 @@
+name: GunlukOdul
+main: leaderos.web.tr.dailyreward.Main
+version: 2.0.2
+api-version: 1.13
+author: Geik
+depend: [PlaceholderAPI]
+commands:
+  günlüködül:
+    description: Ana komuttur.

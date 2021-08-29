@@ -1,0 +1,33 @@
+timeFormat:
+   hour: "s"
+   minute: "dk"
+   second: "sn"
+
+Gui:
+   name: "&2Günlük Ödül"
+   rewardTooked: "&cAlınmış"
+   rewardCannot: "&cAlınamaz"
+   rewardATM: "&aBuradasın"
+   rewardHelp:
+      name: "&3Ödül Bilgisi"
+      lore:
+      - ""
+      - " &8▪ &7Bu menü senin günlük ödülünü"
+      - " &8▪ &7Alabileceğin yerdir. Durumunu buradan"
+      - " &8▪ &7Inceleyip her gün yeni ödül alabilirsin!"
+      
+fillItem:
+   material: "STAINED_GLASS_PANE"
+   damage: 7
+      
+Titles:
+   DailyReward: "&2Günlük Ödül"
+   
+RewardMsg:
+   alreadyTook: "&cÖdülü Alınamaz!"
+   takingSuccess: "&aÖdül Alındı!"
+   loginMsg: "&2GünlükÖdül &7Günlük ödülün hazır almayı unutma! &6/günlüködül"
+   
+Placeholder:
+   canTake: "&aAlınabilir"
+   
