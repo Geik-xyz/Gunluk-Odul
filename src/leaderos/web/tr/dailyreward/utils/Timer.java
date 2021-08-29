@@ -8,9 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import leaderos.web.tr.dailyreward.Listeners;
 import leaderos.web.tr.dailyreward.Main;
-import leaderos.web.tr.dailyreward.database.DatabaseQueries;
 
 public class Timer {
 	
@@ -88,31 +86,17 @@ public class Timer {
     public static void runix()
     {
     	
-    	for (String key : RewardManager.cache.keySet())
-    	{
-    		
-    		Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () ->
-    		{
-    			
-    			DatabaseQueries.savePlayerAllCache(key);
-    			
-    		});
-    		
-    	}
-    	
-    	RewardManager.cache.clear();
-    	
-    	Bukkit.getScheduler().runTaskLaterAsynchronously(Main.instance, () ->
+    	Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () ->
 		{
 			
 			for (Player s : Bukkit.getOnlinePlayers())
-				Listeners.insertPlayerValues(s);
+				RewardManager.dailyUpdate(s);
 			
-		}, 5L);
-    	
-    	Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+			Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
 				taskAgain();
-		}, 600L);
+			}, 2000L);
+			
+		});
     	
     }
 

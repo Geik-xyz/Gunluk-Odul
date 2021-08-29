@@ -114,7 +114,9 @@ Rewards:
       tookedMaterial: MINECART
       requirement:
          statistic_hours_played: 200
-      reqErrorMessage: "&2GünlükÖdül &4200 &csaat oynamadığın için ödül alamadın!"
+         reward:
+         - "msg %player% 200 saat oynadığın için farklı bir ödül aldın!"
+         - "give %player% diamond 1"
       firework:
          deploy: true
          amount: 3
@@ -123,6 +125,9 @@ Rewards:
       - ""
       - "&7Günlük bonusunuzu almak için"
       - "&7her gün tekrar gelin!"
+      - ""
+      - "&e200 Saat oynama ödülü:"
+      - "&7Bir elmas"
       - ""
       - "&eÜst üste ne kadar çok gün katılırsanız,"
       - "&eödül o kadar iyi olur!"

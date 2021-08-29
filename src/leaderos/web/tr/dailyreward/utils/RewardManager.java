@@ -15,8 +15,28 @@ import leaderos.web.tr.dailyreward.utils.objects.Cache;
 public class RewardManager {
 	
 	public static HashMap<String, Cache> cache = new HashMap<String, Cache>();
+	
+	public static void dailyUpdate(Player player)
+	{
+		
+		Bukkit.getScheduler().runTaskAsynchronously(Main.instance, () -> {
+			
+			Cache playerCache = RewardManager.cache.get(player.getName());
+			
+			if (Main.instance.getConfig().getString("Type").equalsIgnoreCase("streak")) {
+				
+				if (!isStreakValid(player.getName(), playerCache))
+					playerCache.setStreak(0);
+				
+			}
+			
+			sendNotifier(player);
+			
+		});
+		
+	}
 
-	public static boolean isStreakValid(String username)
+	public static boolean isStreakValid(String username, Cache cache)
 	{
 		
 		try
@@ -26,7 +46,7 @@ public class RewardManager {
 			
 	    	SimpleDateFormat sdformat = new SimpleDateFormat("dd-MM-yyyy");
 	    	
-			Date lastTake = sdformat.parse(  cache.get(username).getLastTake()  );
+			Date lastTake = sdformat.parse(  cache.getLastTake()  );
 			
 			Date now = new Date();
 			
@@ -51,7 +71,7 @@ public class RewardManager {
 			
 		}
 		
-		catch (NullPointerException | ParseException e1) {  return false;  }
+		catch (NullPointerException | ParseException e1) {  e1.printStackTrace(); return false;  }
 		
 	}
 	

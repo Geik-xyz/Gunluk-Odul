@@ -102,7 +102,7 @@ public class DatabaseQueries {
             
         }
         
-        catch (SQLException | ClassNotFoundException e1) {  return null;  }
+        catch (SQLException | ClassNotFoundException e1) {  e1.printStackTrace(); return null;  }
         
 	}
 	

@@ -1,5 +1,7 @@
 package leaderos.web.tr.dailyreward.utils.objects;
 
+import java.util.List;
+
 import leaderos.web.tr.dailyreward.utils.enums.RequirementType;
 
 public class Requirement {
@@ -10,7 +12,9 @@ public class Requirement {
 	
 	String DataName;
 	
-	public Requirement(RequirementType type, Object value, String DataName)
+	List<String> rewards;
+	
+	public Requirement(RequirementType type, Object value, String DataName, List<String> rewards)
 	{
 		
 		this.type = type;
@@ -18,6 +22,8 @@ public class Requirement {
 		this.value = value;
 		
 		this.DataName = DataName;
+		
+		this.rewards = rewards;
 		
 	}
 	
@@ -32,6 +38,10 @@ public class Requirement {
 	public String getDataName()
 	{
 		return DataName;
+	}
+	
+	public List<String> getRewards() {
+		return rewards;
 	}
 	
 }

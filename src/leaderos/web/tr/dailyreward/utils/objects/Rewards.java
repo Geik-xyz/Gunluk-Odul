@@ -22,8 +22,6 @@ public class Rewards {
 	
 	List<String> commands;
 	
-	String requirementFail;
-	
 	/**
 	 * @author Geik
 	 * @param DataName
@@ -36,7 +34,7 @@ public class Rewards {
 	 * @param tookedMaterial
 	 */
 	public Rewards(String DataName, String DisplayName, List<String> loreUp, Requirement requirements, FireworkObject firework, Material material, Material tookedMaterial,
-			List<String> commands, String requirementFail)
+			List<String> commands)
 	{
 		
 		this.DataName = DataName;
@@ -54,8 +52,6 @@ public class Rewards {
 		this.tookedMaterial = tookedMaterial;
 		
 		this.commands = commands;
-		
-		this.requirementFail = requirementFail;
 		
 	}
 	
@@ -89,10 +85,6 @@ public class Rewards {
 	
 	public List<String> getCommands() {
 		return commands;
-	}
-	
-	public String getFailMessage() {
-		return requirementFail;
 	}
 
 }

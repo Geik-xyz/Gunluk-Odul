@@ -1,6 +1,5 @@
 package leaderos.web.tr.dailyreward;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
@@ -9,9 +8,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import leaderos.web.tr.dailyreward.commands.Commands;
 import leaderos.web.tr.dailyreward.database.ConnectionPool;
 import leaderos.web.tr.dailyreward.database.DatabaseQueries;
@@ -152,12 +148,17 @@ public class Main extends JavaPlugin {
 			for (String loreAdder : cfg.getStringList("Rewards." + DataName + ".lore"))
 				loreUp.add(Main.color(loreAdder));
 			
+			List<String> commands = cfg.getStringList("Rewards." + DataName + ".commands");
+			
 			// Requirements
 			Requirement requirements = null;
 			
 			if (cfg.isSet("Rewards." + DataName + ".requirement"))
 				for (String req : cfg.getConfigurationSection("Rewards." + DataName + ".requirement").getKeys(false))
 				{
+					
+					if (req.equalsIgnoreCase("reward"))
+						continue;
 					
 					RequirementType type = null;
 					
@@ -175,18 +176,19 @@ public class Main extends JavaPlugin {
 					else
 						value = cfg.getString("Rewards." + DataName + ".requirement." + req);
 					
-					requirements = new Requirement(type, value, req);
+					List<String> rewards = new ArrayList<>();
+					
+					if (cfg.isSet("Rewards." + DataName + ".requirement.reward"))
+						rewards = cfg.getStringList("Rewards." + DataName + ".requirement.reward");
+					
+					else
+						rewards = commands;
+					
+					requirements = new Requirement(type, value, req, rewards);
 					
 				}
 			
-			List<String> commands = cfg.getStringList("Rewards." + DataName + ".commands");
-			
-			String requirementFail = null;
-			
-			if (requirements != null)
-				requirementFail = cfg.getString("Rewards." + DataName + ".reqErrorMessage");
-			
-			Rewards reward = new Rewards(DataName, DisplayName, loreUp, requirements, firework, material, tookedMaterial, commands, requirementFail);
+			Rewards reward = new Rewards(DataName, DisplayName, loreUp, requirements, firework, material, tookedMaterial, commands);
 			
 			rewards.add(reward);
 			

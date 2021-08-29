@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>GunlukOdul</groupId>
   <artifactId>GunlukOdul</artifactId>
-  <version>2.0.2-SNAPSHOT</version>
+  <version>2.0.3-SNAPSHOT</version>
     <properties>
       <shaded.package>org.cas.osd.platform.ciam.shaded</shaded.package>
       <maven.compiler.source>1.8</maven.compiler.source>

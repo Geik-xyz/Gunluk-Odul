@@ -1,4 +1,4 @@
-package leaderos.web.tr.dailyreward;
+	package leaderos.web.tr.dailyreward;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,21 +50,24 @@ public class Listeners implements Listener {
 			
 			Cache playerCache = DatabaseQueries.getPlayerInformations(player.getName());
 			
-			RewardManager.cache.put(player.getName(), playerCache);
-			
 			if (Main.instance.getConfig().getString("Type").equalsIgnoreCase("streak"))
 			{
 				
-				if (!RewardManager.isStreakValid(player.getName()))
+				if (!RewardManager.isStreakValid(player.getName(), playerCache))
 				{
 					
 					DatabaseQueries.resetPlayerStreak(player.getName());
 					
-					RewardManager.cache.get(player.getName()).setStreak(0);
+					playerCache.setStreak(0);
 					
 				}
 			
 			}
+			
+			if (RewardManager.cache.containsKey(player.getName()))
+				RewardManager.cache.remove(player.getName());
+			
+			RewardManager.cache.put(player.getName(), playerCache);
 			
 			RewardManager.sendNotifier(player);
 			
@@ -137,9 +140,12 @@ public class Listeners implements Listener {
 			            Rewards reward = Main.rewards.get(itemSlot);
 			            
 			            boolean giveReward = true;
+			            boolean hasRequirement = false;
 			            
 			            if (reward.getRequirements() != null)
 			            {
+			            	
+			            	hasRequirement = true;
 			            	
 			            	Requirement requirement = reward.getRequirements();
 			            	
@@ -163,42 +169,36 @@ public class Listeners implements Listener {
 			            	
 			            }
 			            
-			            if (giveReward)
+			            player.closeInventory();
+			            
+			            if (hasRequirement && giveReward)
 			            {
 			            	
-			            	for (String s : reward.getCommands()) 
+			            	for (String s : reward.getRequirements().getRewards()) 
 								 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Main.color(s).replace("%player%", player.getName()));
-							
-							Title.send(player, Manager.getText("Lang", "Titles.DailyReward"), Manager.getText("Lang", "RewardMsg.takingSuccess"), 3);
-							
-							if (reward.getFirework().isEnabled())
-								FireworkCosmetic.spawn(player.getLocation(), reward.getFirework().getAmount());
-							
-							player.playSound(player.getLocation(), Sound.valueOf(Main.instance.getConfig().getString("rewardSound")), 0.1F, 0.1F);
-							
-							player.closeInventory();
-							
-							if (Main.instance.getConfig().getBoolean("debug"))
-								Bukkit.getConsoleSender().sendMessage(Main.color("&2GünlükÖdül &b" + player.getName() + " &7adlı üye &e" + 
-									 reward.getDataName() + " &7ödülünü aldı!"));
 			            	
 			            }
 			            
 			            else
 			            {
 			            	
-			            	player.closeInventory();
-			            	
-			            	try
-			            	{
-			            		
-			            		player.sendMessage(  Main.color(reward.getFailMessage())  );
-			            		
-			            	}
-			            	
-			            	catch(NullPointerException e1) {}
+			            	for (String s : reward.getCommands()) 
+								 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Main.color(s).replace("%player%", player.getName()));
 			            	
 			            }
+			            
+			            Title.send(player, Manager.getText("Lang", "Titles.DailyReward"), Manager.getText("Lang", "RewardMsg.takingSuccess"), 3);
+			            
+			            if (reward.getFirework().isEnabled())
+							FireworkCosmetic.spawn(player.getLocation(), reward.getFirework().getAmount());
+			            
+			            player.playSound(player.getLocation(), Sound.valueOf(Main.instance.getConfig().getString("rewardSound")), 0.1F, 0.1F);
+			            
+			            player.closeInventory();
+			            
+			            if (Main.instance.getConfig().getBoolean("debug"))
+							Bukkit.getConsoleSender().sendMessage(Main.color("&2GünlükÖdül &b" + player.getName() + " &7adlı üye &e" + 
+								 reward.getDataName() + " &7ödülünü aldı!"));
 			            
 							
 					}
