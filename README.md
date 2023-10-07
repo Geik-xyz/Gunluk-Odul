@@ -1,7 +1,7 @@
 > `Bu projenin geliştirilmesi bırakılmıştır.`
 
 ![Usage Image](/img/usage.png)
-[For current usage Click](https://bstats.org/plugin/bukkit/DailyReward/7946)
+### [Click for current usage](https://bstats.org/plugin/bukkit/DailyReward/7946)
 
 # Gunluk Odul
 
