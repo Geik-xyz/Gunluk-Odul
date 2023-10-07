@@ -1,5 +1,8 @@
 > `Bu projenin geliştirilmesi bırakılmıştır.`
 
+![Usage Image](/img/usage.png)
+[For current usage Click](https://bstats.org/plugin/bukkit/DailyReward/7946)
+
 # Gunluk Odul
 
 Günlük ödül, oyunculara günlük ödülü teşvik amaçlı geliştirilmiş bir eklentidir. 7 Günlük giriş ödülü ayarlanabilir ve iki modu ile oyuncular ödüllendirilebilir.
